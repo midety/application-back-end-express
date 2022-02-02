@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "NODE_ENV=development nodemon ./src/index --watch src",
+    "start:dev": "nodemon --exec \"DEBUG=express:* babel-node ./src/index\" --watch src",
     "format": "prettier --write \"{src}/**/*.js\"",
     "lint:fix": "eslint --fix \"{src}/**/*.js\""
   },
@@ -20,16 +20,17 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
+    "kill-port": "^1.6.1",
     "nodemon": "^2.0.15",
     "prettier": "2.5.1"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
-    "debug": "^4.3.3",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "express": "^4.17.1",
     "express-validator": "^6.14.0",
+    "mongodb": "^4.3.1",
     "mongoose": "^6.1.2",
     "morgan": "^1.10.0"
   }
