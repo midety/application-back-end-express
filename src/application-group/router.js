@@ -1,5 +1,5 @@
 import express from 'express';
-import { errorRouter } from './RouterApplicationGroup';
+import { ApplicationGroupRouter } from './router';
 
 const router = express.Router();
 
@@ -7,6 +7,6 @@ router.get('', (_, res) => {
   res.json({ apiVersion: 1 }).send();
 });
 
-router.use('/errors', errorRouter);
+router.use('/', ApplicationGroupRouter);
 
 export { router };

@@ -10,5 +10,18 @@ services:
       - ./mongo-volume:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/001_users.js:ro
 
+      back-end:
+    container_name: back-end
+    env_file: .env
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src  
+    command: ["npm run start:dev"]
+    depends_on:
+      - mongodb
+    ports:
+      - 3000:3000
+
 volumes:
   mongo-volume:

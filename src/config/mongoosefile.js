@@ -6,18 +6,17 @@ config();
 
 const { parsed } = dotenvExpand({ parsed: process.env });
 
-console.log(parsed['MONGO_URL']);
 const connect = mongoose.createConnection(parsed['MONGO_URL'], {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 connect.model(
   'Application',
-  require('../application/schema/SchemaApplication'),
+  require('../application/schema/schema.application'),
 );
 connect.model(
   'Application-group',
-  require('../application-group/schema/SchemaApplicationGroup'),
+  require('../application-group/schema/schema.application.group'),
 );
 
 module.exports = connect;
